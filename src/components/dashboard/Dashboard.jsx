@@ -1,4 +1,5 @@
 import React from 'react';
+import CatalogView from '../Carousel/CatalogView';
 import Typography from '@material-ui/core/Typography';
 
 const Dashboard = () => {
@@ -6,18 +7,7 @@ const Dashboard = () => {
         <div>
             <p>Aqui va el catalogo</p>
 
-            <Typography variant="h1" color="initial">
-                PRUEBA pueba
-                </Typography>
-            <Typography variant="h2" color="initial">
-                PRUEBA pueba
-                </Typography>
-            <Typography variant="h3" color="initial">
-                PRUEBA pueba
-                </Typography>
-            <Typography variant="h4" color="initial">
-                PRUEBA pueba
-                </Typography>
+                <CatalogView />
         </div>
     );
 };
