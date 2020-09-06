@@ -1,0 +1,13 @@
+.carouselito {
+    display: inherit;
+    grid-template-rows: 80% auto;
+    text-align: center;
+}
+
+.arroow {
+    display: inline-flex;
+}
+
+.imagecontent {
+    display: block;
+}

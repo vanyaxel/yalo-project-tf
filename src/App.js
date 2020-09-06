@@ -5,6 +5,7 @@ import Theme from './Theme';
 
 import Navbar from './components/Navbar/Navbar';
 import Dashboard from "./components/dashboard/Dashboard";
+import Information from "./components/Products-catalog/info";
 import Login from "./components/login/Login";
 import Services from "./components/services/Services";
 import Orders from './components/orders/Orders';
@@ -25,6 +26,9 @@ export default function App() {
           </Route>
           <Route path="/dashboard">
             <Dashboard />
+          </Route>
+          <Route path="/product-info">
+            <Information />
           </Route>
           <Route path="/services">
             <Services />
