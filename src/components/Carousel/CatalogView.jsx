@@ -1,15 +1,15 @@
 import React from 'react';
-import Products from '../Products-catalog/products'
+import Products from '../Products-catalog/products';
 import CarouselMatch from './CarouselMatch';
 
-const CatalogView = () => {
+const CatalogView = ({ productAdded, setProductAdded }) => {
 
     return (
         <div>
             <CarouselMatch />
-            <Products />
+            <Products productAdded={productAdded} setProductAdded={setProductAdded} />
         </div>
-    )
-}
+    );
+};
 
 export default CatalogView;

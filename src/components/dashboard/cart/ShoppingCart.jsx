@@ -7,6 +7,7 @@ import Select from "@material-ui/core/Select";
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Btn from "../btn/Btn";
+import ProductsCart from './ProductsCart';
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const ShoppingCart = () => {
+const ShoppingCart = ({ productAdded, setProductAdded }) => {
 
     const classes = useStyles();
     const [service, setService] = React.useState(1);
@@ -36,70 +37,27 @@ const ShoppingCart = () => {
     const handleOpen = () => {
         setOpen(true);
     };
+
+    const totalPrice = productAdded.products.reduce((acc, curr) => acc + curr.price, 0);
+
+    const numItems = productAdded.products.length;
+
+    console.log('cart', productAdded);
     return (
         <div>
-            <Typography variant="h4" color="initial">Carrito de compras</Typography>
-            <div>
-                <div>
+            <Typography variant="h1" color="initial">Carrito de compras</Typography>
+            <Typography variant="body1" color="initial">Subtotal {numItems} productos ${totalPrice}.00</Typography>
+            <Typography variant="body1" color="initial">Costo del envión estandar: $120.00</Typography>
+            <Typography variant="body1" color="initial"><strong>Subtotal: ${totalPrice + 120}.00</strong></Typography>
+
+            <Btn title='Proceder al pago' />
+            {
+                productAdded.products.map(item =>
                     <div>
-                        <div>aqui va imagen</div>
+                        <ProductsCart item={item} productAdded={productAdded} setProductAdded={setProductAdded} />
                     </div>
-                    <div>
-                        <Typography variant="h6" color="initial">Amazon - Echo Dot
-                        Bocina inteligente con Alexa
-                        Negro Carbón
-                    </Typography>
-                        <Typography variant="h6" color="initial">Cantidad
-                    </Typography>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel id="demo-controlled-open-select-label">Cantidad</InputLabel>
-                            <Select
-                                labelId="demo-controlled-open-select-label"
-                                id="demo-controlled-open-select"
-                                open={open}
-                                onClose={handleClose}
-                                onOpen={handleOpen}
-                                value={service}
-                                onChange={handleChange}
-                            >
-                                <MenuItem value={1}>1</MenuItem>
-                                <MenuItem value={2}>2</MenuItem>
-                                <MenuItem value={3}>3</MenuItem>
-                                <MenuItem value={4}>4</MenuItem>
-                                <MenuItem value={5}>5</MenuItem>
-                                <MenuItem value={6}>6</MenuItem>
-                                <MenuItem value={7}>7</MenuItem>
-                                <MenuItem value={8}>8</MenuItem>
-                                <MenuItem value={9}>9</MenuItem>
-                            </Select>
-                        </FormControl>
-                    </div>
-                    <div>
-                        <Button variant="text" color="default">
-                            Eliminar producto
-                    </Button>
-                    </div>
-                </div>
-                <div>
-                    <Typography variant="h6" color="initial">
-                        $849
-                </Typography>
-                </div>
-            </div>
-            <div>
-                <Typography variant="h6" color="initial">
-                    Total:  $849
-                </Typography>
-                <Button variant="contained" color="secondary">
-                    Comprar ahora
-                    </Button>
-                <Typography variant="body2" color="initial">
-                    Seguir comprando
-                </Typography>
-            </div>
-            <div>
-                <Btn title='prueba' link='/payment' />
-            </div>
+                )
+            }
         </div>
     );
 };

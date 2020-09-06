@@ -2,12 +2,10 @@ import React from 'react';
 import CatalogView from '../Carousel/CatalogView';
 import Typography from '@material-ui/core/Typography';
 
-const Dashboard = () => {
+const Dashboard = ({ productAdded, setProductAdded }) => {
     return (
         <div>
-            <p>Aqui va el catalogo</p>
-
-                <CatalogView />
+            <CatalogView productAdded={productAdded} setProductAdded={setProductAdded} />
         </div>
     );
 };

@@ -12,7 +12,7 @@ import Drawer from './Drawer';
 import logo from '../../images/logo.png';
 import useStyles from './styles';
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar({ productAdded }) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -21,6 +21,7 @@ export default function PrimarySearchAppBar() {
     };
 
     const menuId = 'primary-search-account-menu';
+    const numItems = productAdded.products.length;
 
     return (
         <div >
@@ -39,7 +40,7 @@ export default function PrimarySearchAppBar() {
                             </Link>
                             <Link to='/cart'>
                                 <IconButton aria-label="show 17 new notifications" color="inherit">
-                                    <Badge badgeContent={1} color="secondary">
+                                    <Badge badgeContent={numItems} color="secondary">
                                         <ShoppingCartIcon className={classes.iconMenu} />
                                     </Badge>
                                 </IconButton>
