@@ -8,30 +8,63 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
 import PersonIcon from '@material-ui/icons/Person';
-import SettingsIcon from '@material-ui/icons/Settings';
+import PaymentIcon from '@material-ui/icons/Payment';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import TodayIcon from '@material-ui/icons/Today';
+import Typography from '@material-ui/core/Typography';
 import ImportContactsRoundedIcon from '@material-ui/icons/ImportContactsRounded';
+import logo from '../../images/logo.png';
 import './navbar.css';
+import SocialMedia from './SocialMedia';
 
 const useStyles = makeStyles({
     list: {
-        width: 250,
+        width: 'fit-content',
     },
     fullList: {
         width: 'auto',
     },
     drawerPaper: {
-        background: 'lightgray'
+        background: '#3732A7',
+        width: '300px'
+    },
+    headerNavbar: {
+        position: 'relative',
+        top: '50px',
+        margin: '20px 45px'
+    },
+    logoNavbar: {
+        width: '50px',
+    },
+    listItem: {
+        height: '50px',
+        position: 'relative',
+        top: '90px',
+        margin: '5px 20px'
     },
     iconMenu: {
         color: '#ffff'
     },
-    linkIconMenu: {
-
+    linkNavbar: {
+        textDecoration: 'none'
+    },
+    textNavbar: {
+        color: '#ffff',
+        fontSize: '14px',
+        textTransform: 'initial',
+    },
+    iconNavbar: {
+        color: '#ffff',
+    },
+    socialMedia: {
+        position: 'relative',
+        top: '175px',
+        margin: '15px 20px',
+        width: '90%',
+        borderTop: 'solid 1px #5A54F2',
+        paddingTop: '20px'
     }
 });
 
@@ -63,49 +96,55 @@ export default function SwipeableTemporaryDrawer() {
         >
             <List
             >
-                <ListItem >
-                    <Link to='/profile'>
+                <div className={classes.headerNavbar} >
+                    <img src={logo} alt="logo" className={classes.logoNavbar} />
+                    <Typography variant="h5" className={classes.textNavbar}>¡Hola!</Typography>
+                </div>
+                <ListItem className={classes.listItem}>
+                    <Link to='/profile' className={classes.linkNavbar}>
                         <Button>
-                            <ListItemIcon><PersonIcon /></ListItemIcon>
-                            <ListItemText primary='Perfil' />
+                            <ListItemIcon><PersonIcon className={classes.iconNavbar} /></ListItemIcon>
+                            <Typography variant="h5" className={classes.textNavbar} >Perfil</Typography>
                         </Button>
                     </Link>
                 </ListItem>
-                <ListItem >
-                    <Link to='/dashboard'>
+                <ListItem className={classes.listItem}>
+                    <Link to='/dashboard' className={classes.linkNavbar} >
                         <Button>
-                            <ListItemIcon><ImportContactsRoundedIcon /></ListItemIcon>
-                            <ListItemText primary='Catálogo' />
+                            <ListItemIcon><ImportContactsRoundedIcon className={classes.iconNavbar} /></ListItemIcon>
+                            <Typography variant="h5" className={classes.textNavbar} >Catálogo</Typography>
                         </Button>
                     </Link>
                 </ListItem>
-                <ListItem >
-                    <Link to='/orders'>
+                <ListItem className={classes.listItem}>
+                    <Link to='/orders' className={classes.linkNavbar} >
                         <Button>
-                            <ListItemIcon><ShoppingBasketIcon /></ListItemIcon>
-                            <ListItemText primary='Mis pedidos' />
+                            <ListItemIcon><ShoppingBasketIcon className={classes.iconNavbar} /></ListItemIcon>
+                            <Typography variant="h5" className={classes.textNavbar} >Historial de pedidos</Typography>
                         </Button>
                     </Link>
                 </ListItem>
-                <ListItem >
-                    <Link to='/menu-services'>
+                <ListItem className={classes.listItem}>
+                    <Link to='/menu-services' className={classes.linkNavbar} >
                         <Button>
-                            <ListItemIcon><TodayIcon /></ListItemIcon>
-                            <ListItemText primary='Servicios' />
+                            <ListItemIcon><TodayIcon className={classes.iconNavbar} /></ListItemIcon>
+                            <Typography variant="h5" className={classes.textNavbar} >Servicios</Typography>
                         </Button>
                     </Link>
                 </ListItem>
-                <ListItem >
-                    <Link to='/settings'>
+                <ListItem className={classes.listItem}>
+                    <Link to='/payment' className={classes.linkNavbar} >
                         <Button>
-                            <ListItemIcon><SettingsIcon /></ListItemIcon>
-                            <ListItemText primary='Ajustes' />
+                            <ListItemIcon><PaymentIcon className={classes.iconNavbar} /></ListItemIcon>
+                            <Typography variant="h5" className={classes.textNavbar} >Método de pago</Typography>
                         </Button>
                     </Link>
                 </ListItem>
-            </List>
-            <Divider />
-        </div>
+            </List >
+            <div className={classes.socialMedia}>
+                <SocialMedia />
+            </div>
+        </div >
     );
 
     return (

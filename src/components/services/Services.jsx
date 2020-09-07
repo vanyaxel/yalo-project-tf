@@ -10,7 +10,6 @@ const Services = () => {
     return (
         <div className={classes.viewAppointment}>
             <Calendar />
-            <ModalAppointment />
         </div>
     );
 };

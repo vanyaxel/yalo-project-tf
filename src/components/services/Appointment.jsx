@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CardAppointment from './CardAppointment';
 import Typography from '@material-ui/core/Typography';
 import useStyles from './styles';
+import { db } from '../../firebaseConfig';
+
+const useAppointments = () => {
+    const [allAppointment, setAllAppointment] = useState([]);
+
+    useEffect(() => {
+        db
+            .collection('appointments')
+            .onSnapshot((snapshot) => {
+                const newAppointment = snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                setAllAppointment(newAppointment);
+            });
+    }, []);
+    return allAppointment;
+};
 
 const Appointment = () => {
 
     const classes = useStyles();
+
+    const appointment = useAppointments();
 
     return (
         <div className={classes.viewMenuService} >
@@ -13,11 +33,13 @@ const Appointment = () => {
                 Historial de servicios
             </Typography>
             <div className={classes.containerCardsAppointment}>
-                <CardAppointment service='Cita para mantenimiento' date='10 de enero de 2020' />
-                <CardAppointment service='Cita para revisión' date='08 de abril de 2020' />
-                <CardAppointment service='Cita para revisión' date='18 de mayo de 2020' />
-                <CardAppointment service='Cita para reparación' date='30 de agosto de 2020' />
-
+                {
+                    appointment.map(appointment =>
+                        <div>
+                            <CardAppointment appointment={appointment} />
+                        </div>
+                    )
+                }
             </div>
         </div>
     );

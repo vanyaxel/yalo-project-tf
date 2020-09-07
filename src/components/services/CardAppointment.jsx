@@ -25,19 +25,24 @@ const useStyles = makeStyles((theme) => ({
 export default function RecipeReviewCard(props) {
     const classes = useStyles();
 
+    const appointment = props.appointment;
+    console.log(appointment);
+
     return (
-        <Card className={classes.root}>
-            <Avatar aria-label="recipe" className={classes.avatar}>
-                <DateRangeIcon />
-            </Avatar>
-            <CardContent className={classes.card}>
-                <Typography variant="h5" color="textSecondary" component="p">
-                    {props.service}
-                </Typography>
-                <Typography variant="body1" color="textSecondary" component="p">
-                    {props.date}
-                </Typography>
-            </CardContent>
-        </Card>
+        <>
+            <Card className={classes.root}>
+                <Avatar aria-label="recipe" className={classes.avatar}>
+                    <DateRangeIcon />
+                </Avatar>
+                <CardContent className={classes.card}>
+                    <Typography variant="h5" color="textSecondary" component="p">
+                        {appointment.service}
+                    </Typography>
+                    <Typography variant="body1" color="textSecondary" component="p">
+                        {appointment.date}
+                    </Typography>
+                </CardContent>
+            </Card>
+        </>
     );
 }

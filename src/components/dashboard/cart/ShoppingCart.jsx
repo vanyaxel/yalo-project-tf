@@ -1,17 +1,30 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import Btn from "../btn/Btn";
+import ProductsCart from './ProductsCart';
+import { db } from '../../../firebaseConfig';
 
 const useStyles = makeStyles((theme) => ({
+    viewCart: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: '5px',
+        position: 'relative',
+        top: '30px',
+    },
+    titleView: {
+        width: '90%'
+    },
+    textView: {
+        width: '90%',
+        fontSize: '15px'
+    },
     button: {
-        display: "block",
-        marginTop: theme.spacing(2)
+        display: 'flex',
+        justifyContent: 'center'
     },
     formControl: {
         margin: theme.spacing(1),
@@ -19,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const ShoppingCart = () => {
+const ShoppingCart = ({ productAdded, setProductAdded }) => {
 
     const classes = useStyles();
     const [service, setService] = React.useState(1);
@@ -36,71 +49,53 @@ const ShoppingCart = () => {
     const handleOpen = () => {
         setOpen(true);
     };
+
+    const totalPrice = productAdded.products.reduce((acc, curr) => acc + curr.price, 0);
+
+    const numItems = productAdded.products.length;
+
+    const handleAddOrder = () => {
+        db.collection("orders").add({
+            poducts: productAdded.products,
+            total: totalPrice,
+            totalItems: numItems
+        })
+            .then(function (docRef) {
+                console.log("Document written with ID: ", docRef.id);
+                setProductAdded({ ...productAdded, products: [] });
+
+            })
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
+    };
+
+    const handleOrder = () => {
+        console.log('sirve');
+    };
+
     return (
         <div>
-            <Typography variant="h4" color="initial">Carrito de compras</Typography>
-            <div>
-                <div>
-                    <div>
-                        <div>aqui va imagen</div>
-                    </div>
-                    <div>
-                        <Typography variant="h6" color="initial">Amazon - Echo Dot
-                        Bocina inteligente con Alexa
-                        Negro Carbón
-                    </Typography>
-                        <Typography variant="h6" color="initial">Cantidad
-                    </Typography>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel id="demo-controlled-open-select-label">Cantidad</InputLabel>
-                            <Select
-                                labelId="demo-controlled-open-select-label"
-                                id="demo-controlled-open-select"
-                                open={open}
-                                onClose={handleClose}
-                                onOpen={handleOpen}
-                                value={service}
-                                onChange={handleChange}
-                            >
-                                <MenuItem value={1}>1</MenuItem>
-                                <MenuItem value={2}>2</MenuItem>
-                                <MenuItem value={3}>3</MenuItem>
-                                <MenuItem value={4}>4</MenuItem>
-                                <MenuItem value={5}>5</MenuItem>
-                                <MenuItem value={6}>6</MenuItem>
-                                <MenuItem value={7}>7</MenuItem>
-                                <MenuItem value={8}>8</MenuItem>
-                                <MenuItem value={9}>9</MenuItem>
-                            </Select>
-                        </FormControl>
-                    </div>
-                    <div>
-                        <Button variant="text" color="default">
-                            Eliminar producto
-                    </Button>
-                    </div>
+            <div className={classes.viewCart}>
+                <Typography variant="h1" color="initial" className={classes.titleView}>
+                    Carrito de compras
+                </Typography>
+                <Typography className={classes.textView}>Subtotal <strong>{numItems}</strong> productos <strong>${totalPrice}.00</strong></Typography>
+                <Typography className={classes.textView}>Costo del envión estandar: <strong>$120.00</strong></Typography>
+                <Typography className={classes.textView}><strong>Total: ${totalPrice + 120}.00</strong></Typography>
+                <div className={classes.button}>
+                    <Btn title='Proceder al pago' click={handleAddOrder} />
                 </div>
-                <div>
-                    <Typography variant="h6" color="initial">
-                        $849
-                </Typography>
-                </div>
-            </div>
-            <div>
-                <Typography variant="h6" color="initial">
-                    Total:  $849
-                </Typography>
-                <Button variant="contained" color="secondary">
-                    Comprar ahora
-                    </Button>
-                <Typography variant="body2" color="initial">
-                    Seguir comprando
-                </Typography>
-            </div>
-            <div>
-                <Btn title='prueba' link='/payment' />
+                {
+                    productAdded.products.map(item =>
+                        <div>
+                            <ProductsCart item={item} productAdded={productAdded} setProductAdded={setProductAdded} />
+                        </div>
+                    )
+                }
             </div>
         </div>
+
     );
 };
 

@@ -6,7 +6,9 @@ const useStyles = makeStyles({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '5px'
+        marginTop: '5px',
+        position: 'relative',
+        top: '30px',
     },
     titleView: {
         width: '90%'
