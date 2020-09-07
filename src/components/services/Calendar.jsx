@@ -30,6 +30,10 @@ const useStyles = makeStyles({
     note: {
         fontSize: '12px',
         margin: '0 0 10px 0 '
+    },
+    btnApp: {
+        float: 'right',
+        marginTop: '15PX'
     }
 });
 
@@ -142,7 +146,7 @@ export default function MaterialUIPickers() {
                     </CardContent>
                 </Card>
             </MuiPickersUtilsProvider >
-            <div>
+            <div className={classes.btnApp}>
                 <ModalAppointment handleAddOrder={handleAddOrder} handleCloseModal={handleCloseModal} openModal={openModal}
                 />
             </div>

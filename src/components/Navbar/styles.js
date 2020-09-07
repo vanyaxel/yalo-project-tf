@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
-        height: '100px',
+        height: '103px',
         display: 'flex',
         flexDirection: 'column',
         background: '#3732A7',

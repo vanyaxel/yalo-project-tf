@@ -80,9 +80,9 @@ const ShoppingCart = ({ productAdded, setProductAdded }) => {
                 <Typography variant="h1" color="initial" className={classes.titleView}>
                     Carrito de compras
                 </Typography>
-                <Typography className={classes.textView}>Subtotal {numItems} productos ${totalPrice}.00</Typography>
-                <Typography className={classes.textView}>Costo del envión estandar: $120.00</Typography>
-                <Typography className={classes.textView}><strong>Subtotal: ${totalPrice + 120}.00</strong></Typography>
+                <Typography className={classes.textView}>Subtotal <strong>{numItems}</strong> productos <strong>${totalPrice}.00</strong></Typography>
+                <Typography className={classes.textView}>Costo del envión estandar: <strong>$120.00</strong></Typography>
+                <Typography className={classes.textView}><strong>Total: ${totalPrice + 120}.00</strong></Typography>
                 <div className={classes.button}>
                     <Btn title='Proceder al pago' click={handleAddOrder} />
                 </div>
