@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import  { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
@@ -23,8 +23,7 @@ const useProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const compuMerch =
-      'https://v2-api.sheety.co/8a2deb1e9cc04072f56f8664c485e58e/compumundoApi/hoja1';
+    const compuMerch = 'https://api.sheety.co/b032d050fe95c4bd74ce568d32973258/hojaProductos/hoja1';
     fetch(compuMerch)
       .then((res) => res.json())
       .then((data) => {
@@ -45,7 +44,7 @@ const Products = () => {
       <ul className="wrapper">
           {products.map((item) => (
             <Card className={classes.root} key={item.id}>
-              <Link to="/product-info">
+              <Link to={`/product-info/${item.id}`}>
               <CardMedia
                 className={classes.media}
                 image={item.image}
@@ -55,7 +54,7 @@ const Products = () => {
               </Link>
             </Card>
           ))}
-        
+
       </ul>
     </div>
   );
