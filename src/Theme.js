@@ -20,21 +20,11 @@ const theme = createMuiTheme({
             margin: '10px 0',
             color: '#5A54F2',
         },
-        /*  h2: {
-             fontWeight: 600,
-             fontSize: "25px",
-             margin: '10px',
-         }, */
         h3: {
             fontWeight: 500,
             fontSize: "18px",
             marginBottom: '10px'
         },
-        /*        h4: {
-                    fontWeight: 400,
-                    fontSize: "16px",
-                    margin: '10px'
-                },*/
         h5: {
             fontWeight: 500,
             fontSize: "16px",
@@ -44,6 +34,11 @@ const theme = createMuiTheme({
             fontWeight: 400,
             fontSize: "16px",
             marginBottom: '5px'
+        },
+        body2: {
+            fontWeight: 400,
+            fontSize: "15px",
+            marginTop: '15px',
         }
     },
 

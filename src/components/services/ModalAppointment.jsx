@@ -34,7 +34,7 @@ export default function AlertDialog() {
             >
                 <DialogTitle id="alert-dialog-title">{"Cita agendada"}</DialogTitle>
                 <DialogContent>
-                    <CheckCircleOutlineIcon />
+                    <CheckCircleOutlineIcon className={classes.checkIcon} />
                     <DialogContentText id="alert-dialog-description">
                         Tu cita ha sido agendada, en unos momentos recibiras un correo electrónico de confirmación.
                         Cualquier duda, puedes ponerte en contacto con nosotros.

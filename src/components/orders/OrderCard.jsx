@@ -24,6 +24,12 @@ const useStyles = makeStyles((theme) => ({
     },
     imgAvatar: {
         width: '50px'
+    },
+    detailBtn: {
+        color: '#5A54F2',
+        fontSize: '14px',
+        fontWeight: 600,
+        textAlign: 'right'
     }
 }));
 
@@ -37,10 +43,13 @@ export default function RecipeReviewCard(props) {
             </Avatar>
             <CardContent className={classes.card}>
                 <Typography variant="h5" color="textSecondary" component="p">
-                    {props.item}
+                    <strong> {props.item}</strong>
                 </Typography>
                 <Typography variant="body1" color="textSecondary" component="p">
                     {props.date}
+                </Typography>
+                <Typography className={classes.detailBtn}>
+                    Ver más >
                 </Typography>
             </CardContent>
         </Card>

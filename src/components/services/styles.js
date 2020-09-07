@@ -6,7 +6,9 @@ const useStyles = makeStyles({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '5px'
+        marginTop: '5px',
+        position: 'relative',
+        top: '30px',
     },
     root: {
         minWidth: 275,
@@ -44,10 +46,19 @@ const useStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'flex-end'
+        alignItems: 'flex-end',
+        position: 'relative',
+        top: '30px',
     },
     btnAcceptApp: {
         marginRight: '20px'
+    },
+    checkIcon: {
+        color: '#5B5BEE',
+        fontSize: '80px',
+        textAlign: 'center',
+        width: '100%',
+        marginBottom: '20px',
     }
 });
 

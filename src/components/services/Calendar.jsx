@@ -17,7 +17,7 @@ const useStyles = makeStyles({
         flexDirection: 'column',
         alignItems: 'flex-start',
         justifyContent: 'center',
-        margin: '25px 0'
+        margin: '5px 0'
     },
     viewMenuService: {
         margin: '20px'
@@ -25,6 +25,10 @@ const useStyles = makeStyles({
     cardContainer: {
         padding: '10px !important'
     },
+    note: {
+        fontSize: '12px',
+        margin: '0 0 10px 0 '
+    }
 });
 
 export default function MaterialUIPickers() {
@@ -58,6 +62,8 @@ export default function MaterialUIPickers() {
             </Typography>
             <MuiPickersUtilsProvider utils={DateFnsUtils} >
                 <div className={classes.dateHourContainer}>
+                    <Typography className={classes.note}>Recuerda nuestro horario de atención
+lunes a domingo de 11:00 am a 7:00 pm</Typography>
                     <Typography variant="h5" color="initial">Elige la fecha para tu cita</Typography>
                     <KeyboardDatePicker
                         margin="normal"
@@ -101,7 +107,7 @@ export default function MaterialUIPickers() {
                         <Typography variant="h5" >
                             Resumen de cita
                     </Typography>
-                        <Typography variant="body1" component="p">
+                        <Typography variant="body2" component="p">
                             Fecha y hora elegida:
                         <br />
                             {day}

@@ -10,7 +10,9 @@ const useStyles = makeStyles({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '5px'
+        marginTop: '5px',
+        position: 'relative',
+        top: '30px',
     },
     titleView: {
         width: '90%'
@@ -20,7 +22,7 @@ const useStyles = makeStyles({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'flex-start',
-        margin: '20px'
+        margin: '20px 0'
     },
     textView: {
         width: '90%'
@@ -52,43 +54,45 @@ const Payment = () => {
                 <Typography variant="h1" color="initial" className={classes.titleView}>
                     Registro de forma de pago
             </Typography>
-            </div>
-
-            <div className={classes.creditCard}>
-                <Typography variant="body1" color="initial" className={classes.textView}>
-                    Número de
-                    tarjeta
+                <div className={classes.creditCard}>
+                    <Typography variant="body1" color="initial" className={classes.textView}>
+                        Número de
+                        tarjeta
                 </Typography>
-                <form noValidate>
-                    <TextField
-                        variant="outlined"
-                        id="mui-theme-provider-outlined-input"
-                        className={classes.inputCard}
-                    />
-                </form>
-                <Typography variant="body1" color="initial" className={classes.textView}>
-                    Fecha de expiración
+                    <form noValidate>
+                        <TextField
+                            variant="outlined"
+                            placeholder='1234-1234-1234-1234'
+                            id="mui-theme-provider-outlined-input"
+                            className={classes.inputCard}
+                        />
+                    </form>
+                    <Typography variant="body1" color="initial" className={classes.textView}>
+                        Fecha de expiración
                     </Typography>
-                <form noValidate>
-                    <TextField
-                        variant="outlined"
-                        id="mui-theme-provider-outlined-input"
-                    />
-                </form>
+                    <form noValidate>
+                        <TextField
+                            variant="outlined"
+                            id="mui-theme-provider-outlined-input"
+                            placeholder='mm/yy'
+                        />
+                    </form>
 
-                <Typography variant="body1" color="initial" className={classes.textView}>
-                    CVV
+                    <Typography variant="body1" color="initial" className={classes.textView}>
+                        CVV
                     </Typography>
-                <form noValidate>
-                    <TextField
-                        variant="outlined"
-                        id="mui-theme-provider-outlined-input"
-                    />
-                </form>
-            </div>
-            <div className={classes.containerBtn}>
-                <Btn title='Guardar cambios' link='/cart' />
-                <div className={classes.line}></div>
+                    <form noValidate>
+                        <TextField
+                            variant="outlined"
+                            id="mui-theme-provider-outlined-input"
+                            placeholder='987'
+                        />
+                    </form>
+                </div>
+                <div className={classes.containerBtn}>
+                    <Btn title='Guardar cambios' link='/dashboard' />
+                    <div className={classes.line}></div>
+                </div>
             </div>
 
         </>

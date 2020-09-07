@@ -10,9 +10,25 @@ import Btn from "../btn/Btn";
 import ProductsCart from './ProductsCart';
 
 const useStyles = makeStyles((theme) => ({
+    viewCart: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: '5px',
+        position: 'relative',
+        top: '30px',
+    },
+    titleView: {
+        width: '90%'
+    },
+    textView: {
+        width: '90%',
+        fontSize: '15px'
+    },
     button: {
-        display: "block",
-        marginTop: theme.spacing(2)
+        display: 'flex',
+        justifyContent: 'center'
     },
     formControl: {
         margin: theme.spacing(1),
@@ -42,23 +58,28 @@ const ShoppingCart = ({ productAdded, setProductAdded }) => {
 
     const numItems = productAdded.products.length;
 
-    console.log('cart', productAdded);
     return (
         <div>
-            <Typography variant="h1" color="initial">Carrito de compras</Typography>
-            <Typography variant="body1" color="initial">Subtotal {numItems} productos ${totalPrice}.00</Typography>
-            <Typography variant="body1" color="initial">Costo del envión estandar: $120.00</Typography>
-            <Typography variant="body1" color="initial"><strong>Subtotal: ${totalPrice + 120}.00</strong></Typography>
-
-            <Btn title='Proceder al pago' />
-            {
-                productAdded.products.map(item =>
-                    <div>
-                        <ProductsCart item={item} productAdded={productAdded} setProductAdded={setProductAdded} />
-                    </div>
-                )
-            }
+            <div className={classes.viewCart}>
+                <Typography variant="h1" color="initial" className={classes.titleView}>
+                    Carrito de compras
+                </Typography>
+                <Typography className={classes.textView}>Subtotal {numItems} productos ${totalPrice}.00</Typography>
+                <Typography className={classes.textView}>Costo del envión estandar: $120.00</Typography>
+                <Typography className={classes.textView}><strong>Subtotal: ${totalPrice + 120}.00</strong></Typography>
+                <div className={classes.button}>
+                    <Btn title='Proceder al pago' />
+                </div>
+                {
+                    productAdded.products.map(item =>
+                        <div>
+                            <ProductsCart item={item} productAdded={productAdded} setProductAdded={setProductAdded} />
+                        </div>
+                    )
+                }
+            </div>
         </div>
+
     );
 };
 

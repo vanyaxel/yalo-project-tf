@@ -15,9 +15,22 @@ const useStyles = makeStyles({
     boxShadow: 'none',
   },
   media: {
-    height: '200px',
+    height: '100px',
     backgroundSize: 'contain'
   },
+  price: {
+    fontSize: '15px',
+    fontWeight: 600,
+    color: '#5A54F2',
+  },
+  btnAdd: {
+    fontSize: '12px',
+    backgroundColor: '#5A54F2',
+    '&:hover': {
+      background: "#5A54F2",
+    },
+    color: '#ffff',
+  }
 });
 
 const useProducts = () => {
@@ -47,25 +60,21 @@ const Products = ({ productAdded, setProductAdded }) => {
 
   return (
     <div>
-      hola
-      <div>
-        <p> C: </p>
-        <ul className="wrapper">
-          {products.map((item) => (
-            <Card className={classes.root} key={item.id}>
-              <CardMedia
-                className={classes.media}
-                image={item.image}
-              ></CardMedia>
-              <Typography variant="h6">{item.name}</Typography>
-              <Typography variant="body2" color="primary">$ {item.price}.00</Typography>
-              <Button variant="contained" color="primary" onClick={() => { handleAddProduct(item); }}>
-                agregar producto
+      <ul className="wrapper">
+        {products.map((item) => (
+          <Card className={classes.root} key={item.id}>
+            <CardMedia
+              className={classes.media}
+              image={item.image}
+            ></CardMedia>
+            <Typography variant="body2">{item.name}</Typography>
+            <Typography className={classes.price}>$ {item.price}.00</Typography>
+            <Button onClick={() => { handleAddProduct(item); }} className={classes.btnAdd}>
+              agregar producto
                 </Button>
-            </Card>
-          ))}
-        </ul>
-      </div>
+          </Card>
+        ))}
+      </ul>
     </div>
   );
 };

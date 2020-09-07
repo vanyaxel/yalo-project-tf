@@ -17,10 +17,11 @@ import Typography from '@material-ui/core/Typography';
 import ImportContactsRoundedIcon from '@material-ui/icons/ImportContactsRounded';
 import logo from '../../images/logo.png';
 import './navbar.css';
+import SocialMedia from './SocialMedia';
 
 const useStyles = makeStyles({
     list: {
-        width: 250,
+        width: 'fit-content',
     },
     fullList: {
         width: 'auto',
@@ -29,9 +30,19 @@ const useStyles = makeStyles({
         background: '#3732A7',
         width: '300px'
     },
+    headerNavbar: {
+        position: 'relative',
+        top: '50px',
+        margin: '20px 45px'
+    },
+    logoNavbar: {
+        width: '50px',
+    },
     listItem: {
         height: '50px',
-        width: '300px'
+        position: 'relative',
+        top: '90px',
+        margin: '5px 20px'
     },
     iconMenu: {
         color: '#ffff'
@@ -41,10 +52,19 @@ const useStyles = makeStyles({
     },
     textNavbar: {
         color: '#ffff',
-        fontSize: '14px'
+        fontSize: '14px',
+        textTransform: 'initial',
     },
     iconNavbar: {
         color: '#ffff',
+    },
+    socialMedia: {
+        position: 'relative',
+        top: '175px',
+        margin: '15px 20px',
+        width: '90%',
+        borderTop: 'solid 1px #5A54F2',
+        paddingTop: '20px'
     }
 });
 
@@ -76,8 +96,8 @@ export default function SwipeableTemporaryDrawer() {
         >
             <List
             >
-                <div>
-                    <img src={logo} alt="logo" />
+                <div className={classes.headerNavbar} >
+                    <img src={logo} alt="logo" className={classes.logoNavbar} />
                     <Typography variant="h5" className={classes.textNavbar}>¡Hola!</Typography>
                 </div>
                 <ListItem className={classes.listItem}>
@@ -113,7 +133,7 @@ export default function SwipeableTemporaryDrawer() {
                     </Link>
                 </ListItem>
                 <ListItem className={classes.listItem}>
-                    <Link to='/settings' className={classes.linkNavbar} >
+                    <Link to='/payment' className={classes.linkNavbar} >
                         <Button>
                             <ListItemIcon><PaymentIcon className={classes.iconNavbar} /></ListItemIcon>
                             <Typography variant="h5" className={classes.textNavbar} >Método de pago</Typography>
@@ -121,7 +141,9 @@ export default function SwipeableTemporaryDrawer() {
                     </Link>
                 </ListItem>
             </List >
-            <Divider />
+            <div className={classes.socialMedia}>
+                <SocialMedia />
+            </div>
         </div >
     );
 
