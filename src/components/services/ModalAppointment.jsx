@@ -9,26 +9,18 @@ import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import { Link } from 'react-router-dom';
 import useStyles from './styles';
 
-export default function AlertDialog() {
+export default function AlertDialog({ handleAddOrder, handleCloseModal, openModal }) {
+
     const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
 
     return (
         <div>
-            <Button variant="contained" color="primary" onClick={handleClickOpen} className={classes.btnAcceptApp}>
+            <Button variant="contained" color="primary" onClick={handleAddOrder} className={classes.btnAcceptApp}>
                 Agendar
             </Button>
             <Dialog
-                open={open}
-                onClose={handleClose}
+                open={openModal}
+                onClose={handleCloseModal}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
@@ -42,7 +34,7 @@ export default function AlertDialog() {
                 </DialogContent>
                 <DialogActions>
                     <Link to='/dashboard'>
-                        <Button onClick={handleClose} variant='contained' color="primary" autoFocus>
+                        <Button onClick={handleCloseModal} variant='contained' color="primary" autoFocus>
                             Aceptar
                     </Button>
                     </Link>

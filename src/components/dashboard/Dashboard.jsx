@@ -3,7 +3,6 @@ import Typography from '@material-ui/core/Typography';
 import CarouselMatch from '../Carousel/CarouselMatch';
 import Products from '../Products-catalog/products';
 import { makeStyles } from '@material-ui/core';
-
 const useStyles = makeStyles({
     viewDashboard: {
         padding: '20px',
@@ -13,6 +12,7 @@ const useStyles = makeStyles({
 const Dashboard = ({ productAdded, setProductAdded }) => {
 
     const classes = useStyles();
+
     return (
         <div className={classes.viewDashboard}>
             <CarouselMatch />

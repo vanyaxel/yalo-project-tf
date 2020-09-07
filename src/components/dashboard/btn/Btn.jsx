@@ -19,7 +19,7 @@ const Btn = (props) => {
     const classes = useStyles();
     return (
         <Link to={props.link} className={classes.textBtnAppointment}>
-            <Button variant="contained" color="primary" className={classes.btnAppoitment}>
+            <Button variant="contained" color="primary" className={classes.btnAppoitment} onClick={props.click}>
                 {props.title}
             </Button>
         </Link>

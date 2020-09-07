@@ -18,7 +18,7 @@ import Payment from "./components/methodPayment/Payment";
 export default function App() {
 
   const [productAdded, setProductAdded] = useState({
-    products: []
+    products: [],
   });
 
   return (

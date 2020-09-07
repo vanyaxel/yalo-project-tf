@@ -1,13 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import Btn from "../btn/Btn";
 import ProductsCart from './ProductsCart';
+import { db } from '../../../firebaseConfig';
 
 const useStyles = makeStyles((theme) => ({
     viewCart: {
@@ -58,6 +54,26 @@ const ShoppingCart = ({ productAdded, setProductAdded }) => {
 
     const numItems = productAdded.products.length;
 
+    const handleAddOrder = () => {
+        db.collection("orders").add({
+            poducts: productAdded.products,
+            total: totalPrice,
+            totalItems: numItems
+        })
+            .then(function (docRef) {
+                console.log("Document written with ID: ", docRef.id);
+                setProductAdded({ ...productAdded, products: [] });
+
+            })
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
+    };
+
+    const handleOrder = () => {
+        console.log('sirve');
+    };
+
     return (
         <div>
             <div className={classes.viewCart}>
@@ -68,7 +84,7 @@ const ShoppingCart = ({ productAdded, setProductAdded }) => {
                 <Typography className={classes.textView}>Costo del envión estandar: $120.00</Typography>
                 <Typography className={classes.textView}><strong>Subtotal: ${totalPrice + 120}.00</strong></Typography>
                 <div className={classes.button}>
-                    <Btn title='Proceder al pago' />
+                    <Btn title='Proceder al pago' click={handleAddOrder} />
                 </div>
                 {
                     productAdded.products.map(item =>
