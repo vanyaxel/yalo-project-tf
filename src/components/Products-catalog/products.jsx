@@ -37,7 +37,7 @@ const useProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const compuMerch = 'https://api.sheety.co/b032d050fe95c4bd74ce568d32973258/hojaProductos/stock';
+    const compuMerch = 'https://maranyil.github.io/compumundo/data/products.json';
     fetch(compuMerch)
       .then((res) => res.json())
       .then((data) => {

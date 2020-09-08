@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import Dialog from '@material-ui/core/Dialog';
 import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
@@ -12,7 +13,6 @@ const useStyles = makeStyles({
     maxHeight: '800px',
     margin: 'auto',
     boxShadow: 'none',
-    padding: '12px'
   },
   media: {
     height: '150px',
@@ -30,15 +30,19 @@ const useStyles = makeStyles({
     fontSize: '15px',
     marginTop: 'none',
   },
-  btnDash: {
+  btnAdd: {
     fontSize: '12px',
-    backgroundColor: '#fffff',
-    border: '1px solid #5A54F2',
+    backgroundColor: '#5A54F2',
+    '&:hover': {
+      background: '#5A54F2',
+    },
     marginTop: '13px',
-    marginLeft: '30%',
-    color: '#5A54F2',
-  }
+    marginLeft: '20%',
+    color: '#ffff',
+  },
 });
+
+
 
 const useProducts = () => {
   const [products, setProducts] = useState([]);
@@ -58,20 +62,34 @@ const useProducts = () => {
 const Information = () => {
   const products = useProducts();
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
 
-  
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div>
+       <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
       <Card className={classes.root} key={products.id}>
         <CardMedia className={classes.media} image={products.image}></CardMedia>
-          <Typography variant="body1">{products.name}</Typography>
-          <Typography variant="subtitle2"> Precio de contado: </Typography>
+          <Typography variant="subtitle">{products.name}</Typography>
+          <Typography variant="body1"> PRECIO DE CONTADO: </Typography>
           <Typography className={classes.price}>$ {products.price}.00</Typography>
           <Typography  className={classes.older}>Antes: $ {products.olderPrice}.00 ||  Ahorras: $ {products.savings}.00</Typography>
           <Typography variant="body2">{products.description}</Typography>
-          <Button className={classes.btnDash}><Link to='/dashboard'>volver al catálogo</Link></Button>
+          <Button className={classes.btnAdd}>agregar producto</Button>
       </Card>
+      </Dialog>
     </div>
   );
 };
