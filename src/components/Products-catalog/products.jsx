@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import  { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
@@ -37,8 +37,7 @@ const useProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const compuMerch =
-      'https://api.sheety.co/08037a6e719e10abd51ee7fe17bba593/compuHiperMegaRed/stock';
+    const compuMerch = 'https://maranyil.github.io/compumundo/data/products.json';
     fetch(compuMerch)
       .then((res) => res.json())
       .then((data) => {
@@ -63,12 +62,14 @@ const Products = ({ productAdded, setProductAdded }) => {
       <ul className="wrapper">
         {products.map((item) => (
           <Card className={classes.root} key={item.id}>
+            <Link to={`/product-info/${item.id}`}>
             <CardMedia
               className={classes.media}
               image={item.image}
             ></CardMedia>
             <Typography variant="body2">{item.name}</Typography>
             <Typography className={classes.price}>$ {item.price}.00</Typography>
+            </Link>
             <Button onClick={() => { handleAddProduct(item); }} className={classes.btnAdd}>
               agregar producto
                 </Button>

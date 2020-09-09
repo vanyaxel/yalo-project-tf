@@ -27,7 +27,7 @@ export default function App() {
         <Navbar productAdded={productAdded} />
         <Switch>
           <Route exact path='/login' render={() => <Login />} />
-          <Route exact path='/product-info' render={() => <Information />} />
+          <Route exact path='/product-info/:id' render={() => <Information />} />
           <Route exact path='/services' render={() => <Services />} />
           <Route exact path='/orders' render={() => <Orders />} />
           <Route exact path='/appointment' render={() => <Appointment />} />
