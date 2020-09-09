@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     maxHeight: '800px',
     margin: 'auto',
     boxShadow: 'none',
-    padding: '12px'
+    padding: '11px'
   },
   media: {
     height: '150px',
