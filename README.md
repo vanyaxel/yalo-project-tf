@@ -1,5 +1,5 @@
 ## Squad CompumundoHipermegared & Yalo.
 
-![Yalo]('./public/Yalocompumundo.png')
+![Yalo]('Yalocompumundo.png')
 
 ### Desarrollado por Eliza
